@@ -1,4 +1,4 @@
-### JoustMania for Le Potato (work in progress)
+# JoustMania for Le Potato (work in progress)
 
 What is JoustMania????
 --------------------------------------
