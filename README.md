@@ -44,10 +44,10 @@ git clone https://github.com/DrDecagon/JoustMania.git
 cd JoustMania
 sudo ./setup.sh
 ```
-As there is no internal bluetooth on this device, there is no need to disable it.
-If something goes wrong during instillation, try running setup.sh again.
+* As there is no internal bluetooth on this device, there is no need to disable it.
+* If something goes wrong during instillation, try running setup.sh again.
 
-You can now disconnect the hdmi cable and run JoustMania in headless mode. JoustMania will automatically boot up on restart, menu music should start playing once Le Potato boots up. Note audio will only play out of HDMI when plugged into a monitor, and only out of the audio jack when unpluged from a monitor.
+* You can now disconnect the hdmi cable and run JoustMania in headless mode. JoustMania will automatically boot up on restart, menu music should start playing once Le Potato boots up. Note audio will only play out of HDMI when plugged into a monitor, and only out of the audio jack when unpluged from a monitor.
 
 Update Joust Mania
 ---------------------------
