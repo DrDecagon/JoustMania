@@ -1,3 +1,5 @@
+### JoustMania for Le Potato (work in progress)
+
 What is JoustMania????
 --------------------------------------
 
@@ -10,6 +12,7 @@ Cool Stuffs!
 --------------------------------------
 
 * Now on [Windows & Steam!](https://store.steampowered.com/app/1093850/JoustMania/)
+* Works on Raspberry PI, X86-64 with Debian, and now with Le Potato
 * 18+ Player support
 * Super easy setup
 * Runs in Headless mode, no screen required
