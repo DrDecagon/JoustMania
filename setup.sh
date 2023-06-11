@@ -94,13 +94,14 @@ setup() {
     uname3="$(stat --format '%U' $HOMEDIR'/JoustMania/piparty.py')"
     if [ "${uname2}" = "root" ] || [ "${uname3}" = "root" ] ; then
         sudo chown -R $HOMENAME:$HOMENAME $HOMEDIR/JoustMania/
-        # "permisions updated, please wait after reboot for Joustmania to start"
+        sudo git config --global --add safe.directory $HOMEDIR/JoustMania
+        echo "all permisions updated"
     else
-        echo "no permissions to update"
+        git config --global --add safe.directory $HOMEDIR/JoustMania
+        echo "only git permissions updated"
     fi
     
     echo "joustmania successfully updated, now rebooting"
-    # "Joustmania successfully updated, now rebooting"
     # Pause a second before rebooting so we can see all the output from this script.
     (sleep 2; sudo reboot) &
 }
