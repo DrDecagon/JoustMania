@@ -35,10 +35,9 @@ The class 1 adapters allow bluetooth connections up to 300+ feet and allow for t
 Installation
 ---------------------------
 
-0. [Download](https://distro.libre.computer/ci/raspbian/11/2022-09-22-raspbian-bullseye-arm64%2Baml-s905x-cc.img.xz) and [Install](https://hub.libre.computer/t/raspbian-11-bullseye-for-libre-computer-boards/82) this custom version of Raspbian on the micro SD card.  This build was based on the latest version of Raspberry Pi OS (Bullseye 64bit).
-0. Connect the bluetooth adapters and speaker
-0. Turn on Le Potato, open a Terminal and run these commands, Le Potato will reboot on a successful install
-0. If something goes wrong during instillation, try running setup.sh again.
+1. [Download](https://distro.libre.computer/ci/raspbian/11/2022-09-22-raspbian-bullseye-arm64%2Baml-s905x-cc.img.xz) and [Install](https://hub.libre.computer/t/raspbian-11-bullseye-for-libre-computer-boards/82) this custom version of Raspbian on the micro SD card.  This build was based on the latest desktop version of Raspberry Pi OS (Bullseye 64bit).
+1. Connect the bluetooth adapters and speaker
+1. Turn on Le Potato, open a Terminal and run these commands, Le Potato will reboot on a successful install
 
 ```
 git clone https://github.com/DrDecagon/JoustMania.git
@@ -46,6 +45,7 @@ cd JoustMania
 sudo ./setup.sh
 ```
 As there is no internal bluetooth on this device, there is no need to disable it.
+If something goes wrong during instillation, try running setup.sh again.
 
 You can now disconnect the hdmi cable and run JoustMania in headless mode. JoustMania will automatically boot up on restart, menu music should start playing once Le Potato boots up. Note audio will only play out of HDMI when plugged into a monitor, and only out of the audio jack when unpluged from a monitor.
 
