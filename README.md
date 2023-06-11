@@ -1,12 +1,3 @@
-![Magfest 2017](logo/magfest.jpg)
-JoustMania at Magfest 2017!
-
-
-<p align="center">
-  <img src="logo/joustmania2.png" width="700" alt="Joustmania Logo"/>
-</p>
-
-
 What is JoustMania????
 --------------------------------------
 
@@ -27,53 +18,43 @@ Cool Stuffs!
 
 Hardware
 ---------------------------
-I am currently selling fully set up Joustmania devices (pi 4gb model, case, bluetooth dongle, sd card) for $200 with included shipping domestically. If you would like to inquire about purchasing a fully setup Joustmania device, please reach out to joustmaniagame@gmail.com
+This version of the game is forked from main.  It is being tweaked for Libre Computer's Le Potato (A RPi 3B+ replacement board)
 
-If you would like to build your own device you will need the following:
+Recommended:
 
-* A Raspberry Pi 4 B with sd card
+* Class 1, Bluetooth 4.0 USB adapters
 
-Optional and recommended:
+The class 1 adapters allow bluetooth connections up to 300+ feet and allow for the gameplay to be smooth, each adapter can connect to 6 to 7 controllers. I've tested this build with three adapters and 14 controllers successfully.
 
-* Class 1, Bluetooth 4.0 USB adapters (http://a.co/8YKP9tG)
-
-Note on Hardware: The internal bluetooth is shorter range and has a slightly higher latency
-The class 1 adapters allow bluetooth connections up to 300+ feet and allow for the gameplay to be smooth, each adapter can connect to 6 to 7 controllers. I've tested this build with four adapters and 18 controllers successfully.
-
-Optional:
-
-* USB hub for charging controllers(https://www.amazon.com/gp/product/B00HL7Z46K) (http://a.co/7T3HDmJ)
-
-This will allow you to charge 9 controllers at once through the pi
 
 
 Installation
 ---------------------------
 
-0. [Download](https://www.raspberrypi.org/downloads/raspbian/) and [Install](https://www.raspberrypi.org/documentation/installation/installing-images/README.md) Raspbian on the micro SD card, this build was tested on the latest version of the raspberry pi OS, 32 or 64 bit.
+0. [Download](https://distro.libre.computer/ci/raspbian/11/2022-09-22-raspbian-bullseye-arm64%2Baml-s905x-cc.img.xz) and [Install](https://hub.libre.computer/t/raspbian-11-bullseye-for-libre-computer-boards/82) this custom version of Raspbian on the micro SD card.  This build was based on the latest version of Raspberry Pi OS (Bullseye 64bit).
 0. Connect the bluetooth adapters and speaker
-0. Turn on the pi, open a Terminal and run these commands, the pi will reboot on a successful install
+0. Turn on Le Potato, open a Terminal and run these commands, Le Potato will reboot on a successful install
 0. If something goes wrong during instillation, try running setup.sh again.
 
 ```
-git clone https://github.com/adangert/JoustMania.git
+git clone https://github.com/DrDecagon/JoustMania.git
 cd JoustMania
-sudo ./setup.sh --disable_internal_bt
+sudo ./setup.sh
 ```
-If you would not like to turn off the internal bluetooth (this is not recommended) leave off --disable_internal_bt
+As there is no internal bluetooth on this device, there is no need to disable it.
 
-You can now disconnect the hdmi cable and run JoustMania in headless mode. JoustMania will automatically boot up on restart, menu music should start playing once the pi boots up. Note audio will only play out of HDMI when plugged into a monitor, and only out of the audio jack when unpluged from a monitor.
+You can now disconnect the hdmi cable and run JoustMania in headless mode. JoustMania will automatically boot up on restart, menu music should start playing once Le Potato boots up. Note audio will only play out of HDMI when plugged into a monitor, and only out of the audio jack when unpluged from a monitor.
 
 Update Joust Mania
 ---------------------------
-Joustmania will auto update when started and connected to the internet. Sometimes there is a large update, it will say so, then you can press the start and select buttons on a controller to start this update, wait until the pi reboots. If you have the AP enabled, you may need to disable it first to gain access to the internet.
+Joustmania will auto update when started and connected to the internet. Sometimes there is a large update, it will say so, then you can press the start and select buttons on a controller to start this update, wait until Le Potato reboots. If you have the AP enabled, you may need to disable it first to gain access to the internet.
 
 Pairing controllers
 ---------------------------
 
-* In order to pair controllers permanently, plug them into the Raspberry Pi via USB
+* In order to pair controllers permanently, plug them into Le Potato via USB
 * Once plugged in, the controller should turn white indicating that it has been paired correctly
-* Press the PlayStation sync button (the circular one in the middle) to wirelessly connect paired controllers to the Pi
+* Press the PlayStation sync button (the circular one in the middle) to wirelessly connect paired controllers to Le Potato
 
 If pairing is not working for some reason, or you would like to resync all controllers run the following
 ```
@@ -83,7 +64,7 @@ sudo ./reset_bluetooth_connections.sh
 
 If controllers seem to pair to only one Bluetooth adapter, it is likely that they share the same Mac address, refer to this issue: https://github.com/adangert/JoustMania/issues/172
 
-With some bluetooth adapters and ps4 controllers, pushing the playstation sync button after plugging it into the pi may be necessary for it to pair correctly.
+With some bluetooth adapters and ps4 controllers, pushing the playstation sync button after plugging it into Le Potato may be necessary for it to pair correctly.
 
 How to select a game mode
 ---------------------------------
@@ -108,11 +89,11 @@ You can become an Admin by pressing all four front buttons on any controller, th
 
 Web Interface
 ---------------------------------
-Joustmania can also be controlled via a web browser on your laptop or smartphone. If your Pi is on a network, use the IP address of your Pi (for example, http://192.168.1.xxx/). Alternatively, you can turn your Pi in to an access point and connect your device directly to it. To enable this,  run the command
+Joustmania can also be controlled via a web browser on your laptop or smartphone. If your Potato is on a network, use the IP address of your Potato (for example, http://192.168.1.xxx/). Alternatively, you can turn your Potato in to an access point and connect your device directly to it. To enable this,  run the command
 ```
 sudo ./enable_ap.sh
 ```
-Note that this disables normal Wi-Fi on the Pi, the ethernet connection should still work however. The default SSID is "JOUSTMANIA" and the default password is "joustmania"; both (and other) settings may be adjusted in the apfiles/hostapd.conf file before running enable_ap.sh.
+Note that this disables normal Wi-Fi on Le Potato, the ethernet connection should still work however. The default SSID is "JOUSTMANIA" and the default password is "joustmania"; both (and other) settings may be adjusted in the apfiles/hostapd.conf file before running enable_ap.sh.
 
 To connect to the game, go to http://joust.mania in your web browser, you may have to disable LTE on mobile. To disable the access point and restore Wi-Fi, run the command
 ```
@@ -219,5 +200,5 @@ Custom Music
  
 Support and funding
 --------------------------
-If you love this game you can support its development by helping out with my patreon here:
+If you love this game, you can support its development by helping out with the original authors patreon here:
 https://www.patreon.com/adangert
