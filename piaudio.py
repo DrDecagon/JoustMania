@@ -93,7 +93,7 @@ def audio_loop(fname, ratio, stop_proc):
     # TODO: As a future improvment, we could precompute resampled versions of the track
     # at the "steady" playback rates, and only do dynamic resampling when transitioning
     # between them.
-    PERIOD=1024 * 4
+    PERIOD=256 * 4
     # Two channels, two bytes per sample.
     PERIOD_BYTES = PERIOD * 2 * 2
 
@@ -128,7 +128,7 @@ def audio_loop(fname, ratio, stop_proc):
                     raise ValueError("Empty WAV file played.")
                 wf.rewind()
                 
-                device = alsaaudio.PCM(channels=2, rate=48000, \
+                device = alsaaudio.PCM(channels=2, rate=44100, \
                     format=alsaaudio.PCM_FORMAT_S16_LE, periodsize=PERIOD)
 
                 # Loops samples of up to read_size bytes from the wav file.
@@ -271,4 +271,4 @@ class DummyMusic:
         return asyncio.ensure_future(do_nothing())
 
 def InitAudio():
-    pygame.mixer.init(48000, -16, 2, 4096)
+    pygame.mixer.init(44100, -16, 2, 4096)
