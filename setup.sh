@@ -88,7 +88,7 @@ setup() {
     amixer sset Master,0 100%
     sudo alsactl store
     
-    #removed -disable_internal_bt as there is no internal bluetooth
+    #removed -disable_internal_bt as there is no internal bluetooth on AML-S905X-CC
 
     uname2="$(stat --format '%U' $HOMEDIR'/JoustMania/setup.sh')"
     uname3="$(stat --format '%U' $HOMEDIR'/JoustMania/piparty.py')"
