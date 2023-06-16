@@ -128,8 +128,8 @@ def audio_loop(fname, ratio, stop_proc):
                     raise ValueError("Empty WAV file played.")
                 wf.rewind()
                 
-                device = alsaaudio.PCM(channels=wf.getnchannels(), rate=wf.getframerate(), \
-                    format=alsaaudio.PCM_FORMAT_S16_LE, periodsize=PERIOD, device='default')
+                device = alsaaudio.PCM(channels=2, rate=48000, \
+                    format=alsaaudio.PCM_FORMAT_S16_LE, periodsize=PERIOD)
 
                 # Loops samples of up to read_size bytes from the wav file.
                 def ReadSamples(wf, read_size):
@@ -271,4 +271,4 @@ class DummyMusic:
         return asyncio.ensure_future(do_nothing())
 
 def InitAudio():
-    pygame.mixer.init(47000, -16, 2 , 4096)
+    pygame.mixer.init(48000, -16, 2, 4096)
