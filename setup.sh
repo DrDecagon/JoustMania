@@ -83,11 +83,12 @@ setup() {
     
     #installs custom supervisor script for running joustmania on startup
     sudo cp -r $HOMEDIR/JoustMania/conf/supervisor/ /etc/
+    #force dmix systemwide
+    sudo cp $HOMEDIR/JoustMania/conf/asound.conf /etc/
     
-    #Use amixer to set sound output to 100% and force dmix systemwide with asound.conf
+    #Use amixer to set sound output to 100%
     amixer sset Master,0 100%
     sudo alsactl store
-    sudo cp ./conf/asound.conf /etc/
     
     #removed -disable_internal_bt as there is no internal bluetooth on AML-S905X-CC
 
