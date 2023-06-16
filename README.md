@@ -109,7 +109,7 @@ Custom Music
 ---------------------------------
 * JoustMania comes with a couple of pre-installed default songs.
 * Play your own music, by copying it into the respective folders: /audio/(Joust, Zombie, Commander)/music/
-* Supports Mp3, Wav, Ogg, flac and others [Here](http://www.ffmpeg.org/general.html#File-Formats), 
+* Supports Mp3, Wav, Ogg, flac and others [Here](http://www.ffmpeg.org/general.html#File-Formats)  Convert to wav for best performance.
 * All music and audio can be disabled by changing `play_audio = False` in joustsettings.yaml, this will also disable tempo sensitivity changes for each game mode
 * two different menu voices can be selected, either aaron or ivy, you can change this via the menu_voice setting in joustsettings.yaml
 
