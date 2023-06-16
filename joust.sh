@@ -5,10 +5,10 @@ if [ $UID -ne 0 ]; then
   exec sudo $0
 fi
 
-#sets the username of the system, supervisord does not have a login
-#so we need to use the who command. 
-HOMENAME=`who | head -n1 | cut -d " " -f1`
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+#supervisord does not have a login name
+#so we need to find the JoustMania install directory
 
 export HOME="/root"
-export PYTHONPATH="/home/$HOMENAME/psmoveapi/build/"
-exec /home/$HOMENAME/JoustMania/venv/bin/python3 /home/$HOMENAME/JoustMania/piparty.py
+export PYTHONPATH=$(dirname $SCRIPT_DIR)"/psmoveapi/build/"
+exec $SCRIPT_DIR/venv/bin/python3 $SCRIPT_DIR/piparty.py
