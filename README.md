@@ -22,14 +22,13 @@ Cool Stuffs!
 
 Hardware
 ---------------------------
-This version of the game is forked from main.  It is being tweaked for Libre Computer's Le Potato (A RPi 3B+ replacement board)
+This version of the game is a fork of the official [Joustmania](https://github.com/adangert/JoustMania).  It is being tweaked for Libre Computer's Le Potato (A RPi 3B+ replacement board)
 
 Recommended:
 
 * Class 1, Bluetooth 4.0 USB adapters
 
 The class 1 adapters allow bluetooth connections up to 300+ feet and allow for the gameplay to be smooth, each adapter can connect to 6 to 7 controllers. I've tested this build with three adapters and 14 controllers successfully.
-
 
 
 Installation
@@ -204,5 +203,5 @@ Custom Music
  
 Support and funding
 --------------------------
-If you love this game, you can support its development by helping out with the original authors patreon here:
+If you love this game, you can support its development by helping out with the original author's patreon here:
 https://www.patreon.com/adangert
