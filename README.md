@@ -22,7 +22,7 @@ Cool Stuffs!
 
 Hardware
 ---------------------------
-This version of the game is a fork of the official [Joustmania](https://github.com/adangert/JoustMania).  It is being tweaked for Libre Computer's Le Potato (A RPi 3B+ replacement board)
+This version of the game is a fork of the official [Joustmania](https://github.com/adangert/JoustMania).  It is patched for use with Libre Computer's Le Potato (A RPi 3B+ replacement board)
 
 Recommended:
 
@@ -34,11 +34,12 @@ The class 1 adapters allow bluetooth connections up to 300+ feet and allow for t
 Installation
 ---------------------------
 
-1. [Download](https://distro.libre.computer/ci/raspbian/11/2022-09-22-raspbian-bullseye-arm64%2Baml-s905x-cc.img.xz) and [Install](https://hub.libre.computer/t/raspbian-11-bullseye-for-libre-computer-boards/82) this custom version of Raspbian on the micro SD card.  This build was based on the latest desktop version of Raspberry Pi OS (Bullseye 64bit).
-1. Connect the bluetooth adapters and speaker
-1. Turn on Le Potato, open a Terminal and run these commands, Le Potato will reboot on a successful install
+1. [Download](https://distro.libre.computer/ci/raspbian/11/2022-09-22-raspbian-bullseye-arm64-lite%2Baml-s905x-cc.img.xz) and [Install](https://hub.libre.computer/t/raspbian-11-bullseye-for-libre-computer-boards/82) this custom version of Raspbian on the micro SD card.  This build was based on the latest desktop version of Raspberry Pi OS (Bullseye 64bit).
+3. Connect the bluetooth adapters and speaker
+4. Turn on Le Potato and run these commands. Le Potato will reboot on a successful install
 
 ```
+sudo apt update && sudo eatmydata apt install git
 git clone https://github.com/DrDecagon/JoustMania.git
 cd JoustMania
 sudo ./setup.sh
