@@ -26,9 +26,14 @@ This version of the game is a fork of the official [Joustmania](https://github.c
 
 Recommended:
 
-* Class 1, Bluetooth 4.0 USB adapters
-
-The class 1 adapters allow bluetooth connections up to 300+ feet and allow for the gameplay to be smooth, each adapter can connect to 6 to 7 controllers. I've tested this build with three adapters and 14 controllers successfully.
+* Le Potato plus heatsink & wifi - [Amazon](https://amzn.to/3Xh5uss) or [LoveRPi](https://www.loverpi.com/products/libre-computer-aml-s905x-cc-le-potato-with-heatsink-and-wifi-4)
+* Case with fan - [Amazon](https://amzn.to/3Xh1JmJ) or [LoveRPi](https://www.loverpi.com/products/loverpi-active-cooling-media-center-pc-case)
+  
+  Game runs at 100% CPU usage and CPU will throttle if not cooled just a little.  Fan can be connected to the 3.3v connecter to save power and keep the device quiet.
+  
+* Class 1, Bluetooth 4.0 or above USB adapters - [Amazon](https://amzn.to/3NGKCI5)
+  
+  The class 1 adapters have a range of 50 or 100+ meters (165-300 feet) which allows for reliable gameplay.  Each adapter can connect to 6 or 7 controllers.  Some Class 2 adapters exist with extended ranges of 20+ meters (65 feet) which might be suitable indoors - [Amazon](https://amzn.to/3PmTqUI).   I've tested this build with two of these adapters and 12 controllers.
 
 
 Installation
