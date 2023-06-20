@@ -117,7 +117,7 @@ class WebUI():
 
     def shutdown_proc(self):
         sleep(2)
-        system('shutdown now')
+        system('shutdown -H now')
 
     #@app.route('/shutdown_lastscreen')
     def shutdown_lastscreen(self):
