@@ -47,7 +47,7 @@ setup() {
     eatmydata wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tgz
     tar zxf Python-3.11.4.tgz
     cd Python-3.11.4
-    exec configure --enable-optimizations
+    ./configure --enable-optimizations
     eatmydata make -j 4
     sudo eatmydata make altinstall
     cd ..
