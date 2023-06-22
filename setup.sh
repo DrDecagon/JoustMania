@@ -42,15 +42,19 @@ setup() {
 
     #install the python3.11.4 dev environment
     #sudo eatmydata apt-get install -y python3-dev || exit -1
-    sudo eatmydata apt install -y libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev \
-        zlib1g-dev libreadline-dev libssl-dev tk-dev libncursesw5-dev libc6-dev openssl || exit -1
-    eatmydata wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tgz
-    tar zxf Python-3.11.4.tgz
-    cd Python-3.11.4
-    ./configure --enable-optimizations
-    eatmydata make -j 4
-    sudo eatmydata make altinstall
-    cd ..
+    if command -v python3.11 &> /dev/null ; then
+        echo "Python3.11 already installed"
+    else
+        sudo eatmydata apt install -y libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev \
+            zlib1g-dev libreadline-dev libssl-dev tk-dev libncursesw5-dev libc6-dev openssl || exit -1
+        eatmydata wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tgz
+        tar zxf Python-3.11.4.tgz
+        cd Python-3.11.4
+        ./configure --enable-optimizations
+        eatmydata make -j 4
+        sudo eatmydata make altinstall
+        cd ..
+    fi    
     sudo python3.11 -m pip install --upgrade virtualenv || exit -1
 
     # "installing virtual environment"
