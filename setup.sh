@@ -59,7 +59,7 @@ setup() {
     python3.11 -m virtualenv --system-site-packages $VENV || exit -1
     PYTHON=$VENV/bin/python3
     # "installing virtual environment dependencies"
-    $PYTHON -m pip install --ignore-installed psutil flask Flask-WTF pyalsaaudio pydub pyaudio pyyaml scipy dbus-python=1.2.18 || exit -1
+    $PYTHON -m pip install --ignore-installed psutil flask Flask-WTF pyalsaaudio pydub pyaudio pyyaml scipy dbus-python==1.2.18 || exit -1
     #Sometimes pygame tries to install without a whl, and fails (like 2.4.0) this
     #checks that only correct versions will install
     $PYTHON -m pip install --ignore-installed --only-binary ":all:" pygame || exit -1
