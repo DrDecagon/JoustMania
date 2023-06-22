@@ -15,9 +15,8 @@ setup() {
     #TODO: remove pyaudio and dependencies
     #install components
     sudo eatmydata apt-get install -y  \
-        python3 python3-dev python3-pip \
-        python3-pkg-resources python3-setuptools libdpkg-perl \
-        libsdl1.2-dev libsdl-mixer1.2-dev libsdl-sound1.2-dev \
+        #python3 python3-dev python3-pip python3-pkg-resources python3-setuptools 
+        libdpkg-perl libsdl1.2-dev libsdl-mixer1.2-dev libsdl-sound1.2-dev \
         libportmidi-dev portaudio19-dev \
         libsdl-image1.2-dev libsdl-ttf2.0-dev \
         libblas-dev liblapack-dev \
@@ -36,21 +35,30 @@ setup() {
 
     # "Installing software libraries"
     VENV=$HOMEDIR/JoustMania/venv
-    # We install nearly all python deps in the virtualenv to avoid concflicts with system, except
-    # numpy and scipy because they take forever to build.
-    sudo eatmydata apt-get install -y libasound2-dev libasound2 python3-scipy cmake || exit -1
+    # We install nearly all python deps in the virtualenv to avoid concflicts with system,
+    # except...
+    sudo eatmydata apt-get install -y libasound2-dev libasound2 cmake || exit -1
 
-    #install the python3 dev environment
-    sudo eatmydata apt-get install -y python3-dev || exit -1
-    sudo python3 -m pip install --upgrade virtualenv || exit -1
+    #install the python3.11.4 dev environment
+    #sudo eatmydata apt-get install -y python3-dev || exit -1
+    sudo eatmydata apt install -y libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev \
+        zlib1g-dev libreadline-dev libssl-dev tk-dev libncursesw5-dev libc6-dev openssl || exit -1
+    eatmydata wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tgz
+    tar zxf Python-3.11.4.tgz
+    cd Python-3.11.4
+    exec configure --enable-optimizations
+    eatmydata make -j 4
+    sudo eatmydata make altinstall
+    cd ..
+    sudo python3.11 -m pip install --upgrade virtualenv || exit -1
 
     # "installing virtual environment"
     # Rebuilding this is pretty cheap, so just do it every time.
     rm -rf $VENV
-    /usr/bin/python3 -m virtualenv --system-site-packages $VENV || exit -1
+    python3.11 -m virtualenv --system-site-packages $VENV || exit -1
     PYTHON=$VENV/bin/python3
     # "installing virtual environment dependencies"
-    $PYTHON -m pip install --ignore-installed psutil flask Flask-WTF pyalsaaudio pydub pyaudio pyyaml dbus-python || exit -1
+    $PYTHON -m pip install --ignore-installed psutil flask Flask-WTF pyalsaaudio pydub pyaudio pyyaml scipy dbus-python=1.2.18 || exit -1
     #Sometimes pygame tries to install without a whl, and fails (like 2.4.0) this
     #checks that only correct versions will install
     $PYTHON -m pip install --ignore-installed --only-binary ":all:" pygame || exit -1
