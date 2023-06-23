@@ -32,7 +32,7 @@ def big_update(voice):
     current_hash = run_command("sudo runuser -l pi -c 'cd {};git rev-parse HEAD'".format(os.getcwd())).strip()
     run_command("sudo runuser -l {} -c 'cd {};git checkout master'".format(homename,os.getcwd()))
     run_command("sudo runuser -l {} -c 'cd {};git pull'".format(homename,os.getcwd()))
-    run_command("sudo /home/{}/JoustMania/setup.sh".format(getpass.getuser()))
+    run_command("sudo /home/{getuser()}/JoustMania/setup.sh")
     #it failed if it got this far
     time.sleep(3)
     run_command("sudo runuser -l {} -c 'cd {};git checkout {}'".format(homename,os.getcwd(),current_hash))
