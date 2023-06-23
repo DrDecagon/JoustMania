@@ -41,7 +41,7 @@ setup() {
     sudo eatmydata apt-get install -y libasound2-dev libasound2 cmake || exit -1
 
     #install the python3.11.4 dev environment
-    #sudo eatmydata apt-get install -y python3-dev || exit -1
+    sudo eatmydata apt-get install -y python3-dev || exit -1
     if command -v python3.11 &> /dev/null ; then
         echo "Python3.11 already installed"
     else
