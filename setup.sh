@@ -100,7 +100,7 @@ setup() {
     sudo cp $HOMEDIR/JoustMania/conf/asound.conf /etc/
     
     #Use amixer to set sound output to 100%
-    amixer sset Master,0 100%
+    amixer sset ACODEC,0 100%
     sudo alsactl store
     
     #removed -disable_internal_bt as there is no internal bluetooth on AML-S905X-CC
