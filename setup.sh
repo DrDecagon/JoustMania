@@ -92,7 +92,8 @@ setup() {
         -DPSMOVE_BUILD_TRACKER:BOOL=OFF \
         -DPSMOVE_USE_PSEYE:BOOL=OFF
     make -j4
-    
+
+    espeak "configuring system"
     #change the supervisord directory to our own homename
     #this replaces pi default username in joust.conf,
     sed -i -e "s/pi/$HOMENAME/g" $HOMEDIR/JoustMania/conf/supervisor/conf.d/joust.conf
