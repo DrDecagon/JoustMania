@@ -6,12 +6,13 @@ setup() {
     HOMENAME=`logname`
     HOMEDIR=/home/$HOMENAME
     cd $HOMEDIR
+    sudo apt-get install -y espeak
 
-    # "starting software upgrade"
+    espeak "starting system update"
     sudo apt-get update -y || exit -1
     sudo eatmydata apt-get upgrade -y || exit -1
 
-    # "Installing required software dependencies"
+    espeak "Installing required dependencies"
     #TODO: remove pyaudio and dependencies
     #install components
     sudo eatmydata apt-get install -y  \
@@ -23,9 +24,9 @@ setup() {
         libudev-dev swig libbluetooth-dev \
         alsa-utils alsa-tools libasound2-dev libsdl2-mixer-2.0-0 \
         libdbus-glib-1-dev libatlas-base-dev || exit -1
-        #python3 python3-dev python3-pip python3-pkg-resources python3-setuptools python-dbus-dev \
+        #python3 python3-pip python3-pkg-resources python3-setuptools python-dbus-dev \
 
-    # "Installing PS move A.P.I. software updates"
+    espeak "Installing P S move A.P.I. dependencies"
     #install components for psmoveapi
     sudo eatmydata apt-get install -y \
         build-essential \
@@ -33,48 +34,52 @@ setup() {
         libudev-dev libbluetooth-dev \
         libusb-dev || exit -1
 
-    # "Installing software libraries"
+    espeak "Installing software libraries"
     VENV=$HOMEDIR/JoustMania/venv
     # We install nearly all python deps in the virtualenv to avoid concflicts with system,
     # except...
     sudo eatmydata apt-get install -y libasound2-dev libasound2 cmake || exit -1
 
-    #install the python3.11.4 dev environment
     sudo eatmydata apt-get install -y python3-dev || exit -1
     if command -v python3.11 &> /dev/null ; then
         echo "Python3.11 already installed"
+        espeak "Python 3.11 already installed"
     else
+        espeak "installing python installation dependencies"
         sudo eatmydata apt install -y libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev \
             zlib1g-dev libreadline-dev libssl-dev tk-dev libncursesw5-dev libc6-dev openssl || exit -1
+        espeak "downloading python 3.11"
         eatmydata wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tgz
         tar zxf Python-3.11.4.tgz
         cd Python-3.11.4
+        espeak "building python"
         ./configure --enable-optimizations
         eatmydata make -j 4
+        espeak "installing python"
         sudo eatmydata make altinstall
         cd ..
     fi    
     sudo python3.11 -m pip install --upgrade virtualenv || exit -1
 
-    # "installing virtual environment"
+    espeak "installing virtual environment"
     # Rebuilding this is pretty cheap, so just do it every time.
     rm -rf $VENV
     python3.11 -m virtualenv --system-site-packages $VENV || exit -1
     PYTHON=$VENV/bin/python3
-    # "installing virtual environment dependencies"
+    espeak "installing virtual environment dependencies"
     $PYTHON -m pip install --ignore-installed psutil flask Flask-WTF pyalsaaudio pydub pyaudio pyyaml scipy dbus-python==1.2.18 || exit -1
     #Sometimes pygame tries to install without a whl, and fails (like 2.4.0) this
     #checks that only correct versions will install
     $PYTHON -m pip install --ignore-installed --only-binary ":all:" pygame || exit -1
 
-    # "downloading PS move API"
+    espeak "downloading PS move API"
     #install psmoveapi (currently adangert's for opencv 3 support)
     rm -rf psmoveapi
     git clone --recursive https://github.com/thp/psmoveapi.git 
     cd psmoveapi
     git checkout 8a1f8d035e9c82c5c134d848d9fbb4dd37a34b58
 
-    # "compiling PS move API components"
+    espeak "compiling P S move A.P.I. components"
     mkdir build
     cd build
     cmake .. \
@@ -109,13 +114,14 @@ setup() {
     if [ "${uname2}" = "root" ] || [ "${uname3}" = "root" ] ; then
         sudo chown -R $HOMENAME:$HOMENAME $HOMEDIR/JoustMania/
         sudo git config --global --add safe.directory $HOMEDIR/JoustMania
-        echo "all permisions updated"
+        echo "directory and git permisions updated"
     else
         git config --global --add safe.directory $HOMEDIR/JoustMania
-        echo "only git permissions updated"
+        echo "git permissions updated"
     fi
     
     echo "joustmania successfully updated, now rebooting"
+    espeak "joustmania successfully updated, now rebooting"
     # Pause a second before rebooting so we can see all the output from this script.
     (sleep 2; sudo reboot) &
 }
