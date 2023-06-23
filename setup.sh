@@ -14,16 +14,14 @@ setup() {
     # "Installing required software dependencies"
     #TODO: remove pyaudio and dependencies
     #install components
-    sudo eatmydata apt-get install -y  \
-        #python3 python3-dev python3-pip python3-pkg-resources python3-setuptools \
+    sudo eatmydata apt-get install -y  \ #python3 python3-dev python3-pip python3-pkg-resources python3-setuptools \
         libdpkg-perl libsdl1.2-dev libsdl-mixer1.2-dev libsdl-sound1.2-dev \
         libportmidi-dev portaudio19-dev \
         libsdl-image1.2-dev libsdl-ttf2.0-dev \
         libblas-dev liblapack-dev \
         bluez bluez-tools rfkill supervisor cmake ffmpeg \
         libudev-dev swig libbluetooth-dev \
-        alsa-utils alsa-tools libasound2-dev libsdl2-mixer-2.0-0 \
-        #python-dbus-dev \ 
+        alsa-utils alsa-tools libasound2-dev libsdl2-mixer-2.0-0 \ #python-dbus-dev \ 
         libdbus-glib-1-dev libatlas-base-dev || exit -1
 
     # "Installing PS move A.P.I. software updates"
