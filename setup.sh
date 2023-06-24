@@ -58,6 +58,9 @@ setup() {
         espeak "installing python"
         sudo eatmydata make altinstall
         cd ..
+        espeak "removing leftover dependencies"
+        sudo apt remove -y libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev \
+            zlib1g-dev libreadline-dev libssl-dev tk-dev libncursesw5-dev libc6-dev openssl || exit -1
     fi    
     sudo python3.11 -m pip install --upgrade virtualenv || exit -1
 
@@ -120,6 +123,9 @@ setup() {
         git config --global --add safe.directory $HOMEDIR/JoustMania
         echo "git permissions updated"
     fi
+
+    espeak "removing leftover dependencies"
+    sudo apt autoremove
     
     echo "joustmania successfully updated, now rebooting"
     espeak "joustmania successfully updated, now rebooting"
