@@ -45,7 +45,7 @@ Installation
 4. Turn on Le Potato and run these commands. (Le Potato will reboot on a successful install)
 
 ```
-sudo apt update && sudo eatmydata apt install git
+sudo apt update && sudo eatmydata apt install -y git
 git clone https://github.com/DrDecagon/JoustMania.git
 cd JoustMania
 sudo ./setup.sh
