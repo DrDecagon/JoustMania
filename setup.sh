@@ -38,33 +38,19 @@ setup() {
     VENV=$HOMEDIR/JoustMania/venv
     # We install nearly all python deps in the virtualenv to avoid concflicts with system,
     # except...
-    sudo eatmydata apt-get install -y libasound2-dev libasound2 cmake || exit -1
+    sudo eatmydata apt-get install -y libasound2-dev libasound2 cmake python3-dev || exit -1
 
-    sudo eatmydata apt-get install -y python3-dev || exit -1
-    if command -v python3.11 &> /dev/null ; then
-        echo "Python3.11 already installed"
-        espeak "Python 3.11 already installed"
+    if [ $(dpkg-query -W -f='${Status}' python3.11 2>/dev/null | grep -c "ok installed") -eq 0 ]
+        then
+        espeak "installing python 3.11"
+        sudo eatmydata dpkg -i $HOMEDIR/Joustmania/python3.11.4_altinst_arm64.deb
     else
-        espeak "installing python installation dependencies"
-        sudo eatmydata apt install -y libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev \
-            zlib1g-dev libreadline-dev libssl-dev tk-dev libncursesw5-dev libc6-dev openssl || exit -1
-        espeak "downloading python 3.11"
-        eatmydata wget https://www.python.org/ftp/python/3.11.4/Python-3.11.4.tgz
-        tar zxf Python-3.11.4.tgz
-        cd Python-3.11.4
-        espeak "building python"
-        ./configure --enable-optimizations
-        eatmydata make -j 4
-        espeak "installing python"
-        sudo eatmydata make altinstall
-        cd ..
-        espeak "removing leftover dependencies"
-        sudo apt remove -y libffi-dev libbz2-dev liblzma-dev libsqlite3-dev libncurses5-dev libgdbm-dev \
-            zlib1g-dev libreadline-dev libssl-dev tk-dev libncursesw5-dev libc6-dev openssl || exit -1
-    fi    
-    sudo python3.11 -m pip install --upgrade virtualenv || exit -1
-
+        echo "Python 3.11 already installed"
+        espeak "Python 3.11 already installed"
+    fi
+  
     espeak "installing virtual environment"
+    sudo python3.11 -m pip install --upgrade virtualenv || exit -1
     # Rebuilding this is pretty cheap, so just do it every time.
     rm -rf $VENV
     python3.11 -m virtualenv --system-site-packages $VENV || exit -1
