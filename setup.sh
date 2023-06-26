@@ -111,7 +111,7 @@ setup() {
     fi
 
     espeak "removing leftover dependencies"
-    sudo apt autoremove
+    sudo apt autoremove -y
     
     echo "joustmania successfully updated, now rebooting"
     espeak "joustmania successfully updated, now rebooting"
