@@ -8,11 +8,11 @@ setup() {
     cd $HOMEDIR
     sudo apt-get install -y espeak
 
-    espeak "starting system update"
+    espeak "starting system update" &> /dev/null
     sudo apt-get update -y || exit -1
     sudo eatmydata apt-get upgrade -y || exit -1
 
-    espeak "Installing required dependencies"
+    espeak "Installing required dependencies" &> /dev/null
     #TODO: remove pyaudio and dependencies
     #install components
     sudo eatmydata apt-get install -y  \
@@ -26,7 +26,7 @@ setup() {
         libdbus-glib-1-dev libatlas-base-dev || exit -1
         #python3 python3-pip python3-pkg-resources python3-setuptools python-dbus-dev \
 
-    espeak "Installing P S move A.P.I. dependencies"
+    espeak "Installing P S move A.P.I. dependencies" &> /dev/null
     #install components for psmoveapi
     sudo eatmydata apt-get install -y \
         build-essential \
@@ -34,7 +34,7 @@ setup() {
         libudev-dev libbluetooth-dev \
         libusb-dev || exit -1
 
-    espeak "Installing software libraries"
+    espeak "Installing software libraries" &> /dev/null
     VENV=$HOMEDIR/JoustMania/venv
     # We install nearly all python deps in the virtualenv to avoid concflicts with system,
     # except...
@@ -42,33 +42,33 @@ setup() {
 
     if [ $(dpkg-query -W -f='${Status}' python3.11 2>/dev/null | grep -c "ok installed") -eq 0 ]
         then
-        espeak "installing python 3.11"
+        espeak "installing python 3.11" &> /dev/null
         sudo eatmydata dpkg -i $HOMEDIR/JoustMania/python3.11.4_altinst_arm64.deb
     else
         echo "Python 3.11 already installed"
-        espeak "Python 3.11 already installed"
+        espeak "Python 3.11 already installed" &> /dev/null
     fi
   
-    espeak "installing virtual environment"
+    espeak "installing virtual environment" &> /dev/null
     sudo python3.11 -m pip install --upgrade virtualenv || exit -1
     # Rebuilding this is pretty cheap, so just do it every time.
     rm -rf $VENV
     python3.11 -m virtualenv --system-site-packages $VENV || exit -1
     PYTHON=$VENV/bin/python3
-    espeak "installing virtual environment dependencies"
+    espeak "installing virtual environment dependencies" &> /dev/null
     $PYTHON -m pip install --ignore-installed psutil flask Flask-WTF pyalsaaudio pydub pyaudio pyyaml scipy dbus-python==1.2.18 || exit -1
     #Sometimes pygame tries to install without a whl, and fails (like 2.4.0) this
     #checks that only correct versions will install
     $PYTHON -m pip install --ignore-installed --only-binary ":all:" pygame || exit -1
 
-    espeak "downloading PS move API"
+    espeak "downloading PS move API" &> /dev/null
     #install psmoveapi (currently adangert's for opencv 3 support)
     rm -rf psmoveapi
     git clone --recursive https://github.com/thp/psmoveapi.git 
     cd psmoveapi
     git checkout 8a1f8d035e9c82c5c134d848d9fbb4dd37a34b58
 
-    espeak "compiling P S move A.P.I. components"
+    espeak "compiling P S move A.P.I. components" &> /dev/null
     mkdir build
     cd build
     cmake .. \
@@ -82,7 +82,7 @@ setup() {
         -DPSMOVE_USE_PSEYE:BOOL=OFF
     make -j4
 
-    espeak "configuring system"
+    espeak "configuring system" &> /dev/null
     #change the supervisord directory to our own homename
     #this replaces pi default username in joust.conf,
     sed -i -e "s/pi/$HOMENAME/g" $HOMEDIR/JoustMania/conf/supervisor/conf.d/joust.conf
@@ -110,10 +110,10 @@ setup() {
         echo "git permissions updated"
     fi
 
-    espeak "removing leftover dependencies"
+    espeak "removing leftover dependencies" &> /dev/null
     sudo apt autoremove -y
 
-    espeak "joustmania successfully updated, now rebooting"
+    espeak "joustmania successfully updated, now rebooting" &> /dev/null
     echo "JoustMania successfully updated, now rebooting"
     # Pause a second before rebooting so we can see all the output from this script.
     (sleep 2; sudo reboot) &
