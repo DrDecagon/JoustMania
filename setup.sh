@@ -43,7 +43,7 @@ setup() {
     if [ $(dpkg-query -W -f='${Status}' python3.11 2>/dev/null | grep -c "ok installed") -eq 0 ]
         then
         espeak "installing python 3.11"
-        sudo eatmydata dpkg -i $HOMEDIR/Joustmania/python3.11.4_altinst_arm64.deb
+        sudo eatmydata dpkg -i $HOMEDIR/JoustMania/python3.11.4_altinst_arm64.deb
     else
         echo "Python 3.11 already installed"
         espeak "Python 3.11 already installed"
@@ -88,7 +88,7 @@ setup() {
     sed -i -e "s/pi/$HOMENAME/g" $HOMEDIR/JoustMania/conf/supervisor/conf.d/joust.conf
     
     
-    #installs custom supervisor script for running joustmania on startup
+    #installs custom supervisor script for running JoustMania on startup
     sudo cp -r $HOMEDIR/JoustMania/conf/supervisor/ /etc/
     #force dmix systemwide
     sudo cp $HOMEDIR/JoustMania/conf/asound.conf /etc/
@@ -114,7 +114,7 @@ setup() {
     sudo apt autoremove -y
 
     espeak "joustmania successfully updated, now rebooting"
-    echo "joustmania successfully updated, now rebooting"
+    echo "JoustMania successfully updated, now rebooting"
     # Pause a second before rebooting so we can see all the output from this script.
     (sleep 2; sudo reboot) &
 }
