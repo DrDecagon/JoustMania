@@ -29,7 +29,8 @@ Recommended:
 * Le Potato plus heatsink & wifi - [Amazon](https://amzn.to/3Xh5uss) or [LoveRPi](https://www.loverpi.com/products/libre-computer-aml-s905x-cc-le-potato-with-heatsink-and-wifi-4)
 * Case with fan - [Amazon](https://amzn.to/3Xh1JmJ) or [LoveRPi](https://www.loverpi.com/products/loverpi-active-cooling-media-center-pc-case)
   
-  Game runs at 100% CPU usage and CPU will throttle if not cooled just a little.  Fan can be connected to the 3.3v connecter to save power and keep the device quiet.
+  Game runs at 100% CPU usage and CPU will throttle if not cooled just a little.  2 and 3 pin fans can be powered by a 3.3v pin to save power and reduce noice while still keeping the unit cool.
+  **For even better control**, install my small [fan control script](https://github.com/DrDecagon/tlsm)
   
 * Class 1, Bluetooth 4.0 or above USB adapters - [Amazon](https://amzn.to/3NGKCI5)
   
