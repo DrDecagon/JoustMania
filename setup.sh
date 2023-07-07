@@ -20,11 +20,11 @@ setup() {
         libportmidi-dev portaudio19-dev \
         libsdl-image1.2-dev libsdl-ttf2.0-dev \
         libblas-dev liblapack-dev \
-        bluez bluez-tools rfkill supervisor cmake ffmpeg \
+        bluez bluez-tools iptables rfkill supervisor cmake ffmpeg \
         libudev-dev swig libbluetooth-dev \
         alsa-utils alsa-tools libasound2-dev libsdl2-mixer-2.0-0 \
-        libdbus-glib-1-dev libatlas-base-dev || exit -1
-        #python3 python3-pip python3-pkg-resources python3-setuptools python-dbus-dev \
+        libdbus-glib-1-dev usbutils libatlas-base-dev || exit -1
+        #python3 python3-pip python3-pkg-resources python3-setuptools python-dbus-dev python3-dbus \
 
     espeak "Installing P S move A.P.I. dependencies" &> /dev/null
     #install components for psmoveapi
