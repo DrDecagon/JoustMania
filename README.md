@@ -40,7 +40,7 @@ Recommended:
 Installation
 ---------------------------
 
-1. [Download](https://distro.libre.computer/ci/raspbian/11/2022-09-22-raspbian-bullseye-arm64-lite%2Baml-s905x-cc.img.xz) and [Install](https://hub.libre.computer/t/raspbian-11-bullseye-for-libre-computer-boards/82) this headless version of Raspbian on the micro SD card.  This build is based on the latest desktop version of Raspberry Pi OS (Bullseye 64bit).
+1. [Download](https://distro.libre.computer/ci/raspbian/11/2022-09-22-raspbian-bullseye-arm64-lite%2Baml-s905x-cc.img.xz) and [Install](https://hub.libre.computer/t/raspbian-11-bullseye-for-libre-computer-boards/82) this headless version of Raspbian for Le Potato.  (This build is based on the latest desktop version of Raspberry Pi OS Bullseye 64bit.)
 2. If connecting via WiFi, follow [instructions](https://hub.libre.computer/t/raspbian-11-bullseye-for-libre-computer-boards/82) to create wpa_supplicant.conf file before booting.  
 3. Insert SD Card and connect bluetooth adapters and speaker
 4. Turn on Le Potato and run these commands. (Le Potato will reboot on a successful install)
