@@ -1,4 +1,4 @@
-# JoustMania for Le Potato (experimental)
+# JoustMania for Le Potato
 
 What is JoustMania????
 --------------------------------------
