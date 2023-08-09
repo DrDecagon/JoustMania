@@ -5,4 +5,4 @@
 sudo supervisorctl stop joustmania
 sudo kill $(ps aux | grep 'piparty' | awk '{print $2}')
 sleep 2
-sudo kill -9 $(ps aux | grep 'piparty' | awk '{print $2}')
+sudo kill -9 $(ps aux | grep '[p]iparty' | awk '{print $2}')
