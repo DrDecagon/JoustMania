@@ -217,4 +217,4 @@ Support and funding
 If you love this game, you can support its development by helping out with the original author's patreon here:
 https://www.patreon.com/adangert
 
-We also have some great [contributors](CONTRIBUTORS.md) if you would you like to help out with development, or find any bug fixes we would be happy to test them out and incorperate them into the repo!
+We also have some great [contributors](https://github.com/adangert/JoustMania/blob/master/CONTRIBUTORS.md) if you would you like to help out with development, or find any bug fixes we would be happy to test them out and incorperate them into the repo!
